@@ -5,7 +5,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='message_bounce']" position="replace">
-                   <field name="credit_limit" />                
+                   <field name="credit_limit" groups="group_addon_credit"/>
             </xpath>
 
         </field>
