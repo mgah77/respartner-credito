@@ -12,13 +12,13 @@
        """,
     'author' : 'M.Gah',
     'website': '',
-    'installable':'True',
-    'auto_install':'False',
-    'application':'True'
+    'installable': True,
+    'auto_install': False,
+    'application': True,
     'depends': ['base','sale','account'],
     'data': [
             'security/groups.xml',
             'security/ir.model.access.csv',
-            'views/add_credit.xml'           
-    ],
+            'views/add_credit.xml'
+            ],
 }
