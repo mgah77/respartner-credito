@@ -4,7 +4,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//label[@for='user_id']" position="after">
+            <xpath expr="//field[@name='user_id']" position="after">
                <div>
                     <field name="credit_limit" />
                    <label for="Limite de Crédito" />
