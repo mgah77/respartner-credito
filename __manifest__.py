@@ -19,6 +19,7 @@
     'data': [
             'security/groups.xml',
             'security/ir.model.access.csv',
-            'views/add_credit.xml'
+            'views/add_credit.xml',
+            'views/test.xml'
             ],
 }
