@@ -6,4 +6,4 @@ class Test1(models.Model):
     _inherit = ['account.invoice']
 
     credito = fields.Float("Credito")
-    estadodeuda = fields.Char(string="Estado")
+    estadodeuda = fields.Char(string="Estado", readonly = True)
