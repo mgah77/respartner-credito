@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 class Add_credit(models.Model):
     _inherit = ['account.invoice']
 
-    credito = fields.Float(string="Credito",compute="_compute_cantidad_vencida")
+    credito = fields.Float(string="Credito",compute='_compute_cantidad_vencida')
 
     @api.depends('partner_id')
     def _compute_cantidad_vencida(self):
