@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 
 
 class Test1(models.Model):
-    _inherit = ['AccountInvoice']
+    _inherit = ['account.invoice']
 
     credito = fields.Float(string="Credito", compute="_compute_cantidad_vencida")
     estadodeuda = fields.Char(string="Estado", readonly = True)
@@ -14,8 +14,7 @@ class Test1(models.Model):
         for record in self:
             if record.partner_id:
                 vencido = Invoice.search([('partner_id', '=', record.partner_id),('type', '=', 'out_invoice'),('state', '=', 'open')])
-                total_vencido = sum(factura.amount_total for factura in vencido)
-                record.credito = total_vencido
+                total_vencido = sum(factura.amount_total for factura in vencido)                
             else:
                 record.credito = 0
         return
