@@ -12,7 +12,7 @@ class Test1(models.Model):
     def _compute_cantidad_vencida(self):
         Invoice = self.env['account.invoice']
         for record in self:
-            if record.cliente:
+            if record.partner_id:
                 vencido = Invoice.search([('partner_id', '=', record.partner_id),('type', '=', 'out_invoice'),('state', '=', 'open')])
                 total_vencido = sum(factura.amount_total for factura in vencido)
                 record.credito = total_vencido
