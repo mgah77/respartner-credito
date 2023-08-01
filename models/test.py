@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 
 
 class Test1(models.Model):
-    _inherit = ['account.invoice']
+    _inherit = ['AccountInvoice']
 
     credito = fields.Float(string="Credito", compute="_compute_cantidad_vencida")
     estadodeuda = fields.Char(string="Estado", readonly = True)
