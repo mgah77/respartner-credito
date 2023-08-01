@@ -1,5 +1,4 @@
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
 
 
 class Test1(models.Model):
@@ -10,7 +9,6 @@ class Test1(models.Model):
 
     @api.depends('partner_id')
     def _compute_cantidad_vencida(self):
-        Invoice = self.env['account.invoice']
         for record in self:
             record.credito = 0
         return
