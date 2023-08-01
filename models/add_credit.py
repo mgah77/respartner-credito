@@ -3,4 +3,6 @@ from odoo.exceptions import ValidationError
 
 
 class Add_credit(models.Model):
-    _inherit = 'res.partner'
+    _inherit = ['account.invoice']
+
+    credito = fields.Float(string="Credito")
