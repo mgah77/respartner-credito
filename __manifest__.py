@@ -18,6 +18,7 @@
     'depends': ['base','sale','account','l10n_cl_fe'],
     'data': [
             'security/groups.xml',
-            'security/ir.model.access.csv'
+            'security/ir.model.access.csv',
+            'views/test.xml'
             ],
 }
