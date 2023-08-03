@@ -6,6 +6,7 @@ class Add_credit(models.Model):
     _inherit = ['account.invoice']
 
     credito = fields.Float(string="Credito")
+    estado = fields.Selection([('active','Activo'),('deudor','Moroso'),('tope','Excede Credito')], string="Estado", default='active')
 
     #@api.depends('partner_id')
     #def _compute_cantidad_vencida(self):
