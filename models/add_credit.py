@@ -13,7 +13,7 @@ class Add_credit(models.Model):
         Invoice = self.env['account.invoice']
         for record in self:
             if record.partner_id:
-                pre_total = Invoice.search([('partner_id', '=', record.partner_id.id),('type', '=', 'out_invoice'),('state', '=', 'open'),('date_due', '<', fields.Date.today())])
+                pre_total = Invoice.search_count([('partner_id', '=', record.partner_id.id),('type', '=', 'out_invoice'),('state', '=', 'open'),('date_due', '<', fields.Date.today())])
                 total = sum(factura.amount_total for factura in pre_total)
                 record.credito = total
             else:
