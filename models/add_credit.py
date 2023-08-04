@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 class Add_credit(models.Model):
     _inherit = ['account.invoice']
 
+    notification_message = fields.Char(string="Notification Message", readonly=True)
     credito = fields.Float(string="Credito", compute='_compute_cantidad_vencida')
     estado = fields.Selection([('active','Activo'),('deudor','Cliente Moroso'),('tope','Excede Credito')], string="Estado", default='active', readonly=True)
 
