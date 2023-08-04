@@ -20,7 +20,6 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
                    <field name="estado"/>
-                   <field name="credito"/>
             </xpath>
 
         </field>
