@@ -20,11 +20,15 @@ class Add_credit(models.Model):
                 ('date_due', '<', fields.Date.today())
             ])
             if pre_total > 0:
-                self.notification_message = _("Este cliente tiene facturas vencidas.")
-            else:
-                self.notification_message = False
-        else:
-            self.notification_message = False
+                message = _("Este cliente tiene facturas vencidas.")
+                self.notification_message = message
+                return {
+                    'warning': {
+                        'title': _('Aviso'),
+                        'message': message,
+                    }
+                }
+        self.notification_message = False
 
 class Add_credit_venta(models.Model):
     _inherit = ['sale.order']
