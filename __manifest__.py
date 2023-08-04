@@ -1,6 +1,6 @@
 {
     'name':'Addon Credito Clientes',
-    'version':'1.0',
+    'version':'2.0',
     'category':'General',
     'summary': '',
     'description': """
@@ -19,6 +19,6 @@
     'data': [
             'security/groups.xml',
             'security/ir.model.access.csv',
-            'views/test.xml'
+            'views/add_credit.xml'
             ],
 }
