@@ -17,8 +17,10 @@ class Add_credit(models.Model):
                 #total = sum(factura.amount_total for factura in pre_total)
                 if (pre_total > 0):
                     record.estado = 'deudor'
+                    record.state = 'cancel'
                 else:
-                    record.estado = 'active'    
+                    record.estado = 'active'  
+                    record.state = 'draft'  
                 record.credito = pre_total
             else:
                 record.credito = 0
