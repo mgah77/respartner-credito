@@ -8,8 +8,7 @@
                 <field name="notification_message" widget="notification" options="{'display_notifications': 'message'}"/>
             </field>
             <xpath expr="//field[@name='partner_id']" position="after">
-                   <field name="estado"/>
-                   <field name="credito"/>
+                   <field name="estado"/>                
             </xpath>
 
         </field>

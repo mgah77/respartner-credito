@@ -1,6 +1,6 @@
 {
     'name':'Addon Credito Clientes',
-    'version':'2.0',
+    'version':'2.0.2',
     'category':'General',
     'summary': '',
     'description': """
