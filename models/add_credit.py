@@ -27,7 +27,7 @@ class Add_credit(models.Model):
         return
 
 class Add_credit_venta(models.Model):
-    _inherit = ['sale']
+    _inherit = ['sale.order']
 
     credito = fields.Float(string="Credito", compute='_compute_cantidad_vencida')
     estado = fields.Selection([('active','Activo'),('deudor','Cliente Moroso'),('tope','Excede Credito')], string="Estado", default='active', readonly=True)
