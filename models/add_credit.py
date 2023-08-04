@@ -22,13 +22,19 @@ class Add_credit(models.Model):
             if pre_total > 0:
                 message = _("Este cliente tiene facturas vencidas.")
                 self.notification_message = message
+                self.estado = 'deudor'  # Cambiar el estado a "Deudor"
                 return {
                     'warning': {
                         'title': _('Aviso'),
                         'message': message,
                     }
                 }
+            else:
+                self.estado = 'active'  # Restaurar el estado a "Activo" si no hay facturas vencidas
+
         self.notification_message = False
+
+
 
 class Add_credit_venta(models.Model):
     _inherit = ['sale.order']
@@ -50,10 +56,14 @@ class Add_credit_venta(models.Model):
             if pre_total > 0:
                 message = _("Este cliente tiene facturas vencidas.")
                 self.notification_message = message
+                self.estado = 'deudor'  # Cambiar el estado a "Deudor"
                 return {
                     'warning': {
                         'title': _('Aviso'),
                         'message': message,
                     }
                 }
+            else:
+                self.estado = 'active'  # Restaurar el estado a "Activo" si no hay facturas vencidas
+
         self.notification_message = False
