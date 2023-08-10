@@ -27,12 +27,13 @@ class Add_credit(models.Model):
                 message = _("Este cliente sobrepasó su credito.")
                 self.notification_message = message
                 self.estado = 'tope'  # Cambiar el estado a "Deudor"
+                self.status = 'cancel' 
                 return {
                     'warning': {
                         'title': _('Aviso'),
                         'message': message,
                     }
-                }
+                }                
             if pre_total > 0:
                 message = _("Este cliente tiene facturas vencidas.")
                 self.notification_message = message
