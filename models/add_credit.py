@@ -22,21 +22,21 @@ class Add_credit(models.Model):
             vencido = Invoice.search([('partner_id', '=', self.partner_id.id),
                                       ('type', '=', 'out_invoice'),
                                       ('state', '=', 'open')])
-            total_deuda = sum(factura.amount_total for factura in vencido)
-            if pre_total > 0:
-                message = _("Este cliente tiene facturas vencidas.")
+            total_deuda = sum(factura.amount_total for factura in vencido)            
+            if total_deuda > self.partner_id.credit_limit:
+                message = _("Este cliente sobrepasó su credito.")
                 self.notification_message = message
-                self.estado = 'deudor'  # Cambiar el estado a "Deudor"
+                self.estado = 'tope'  # Cambiar el estado a "Deudor"
                 return {
                     'warning': {
                         'title': _('Aviso'),
                         'message': message,
                     }
                 }
-            if total_deuda > self.partner_id.credit_limit:
-                message = _("Este cliente sobrepasó su credito.")
+            if pre_total > 0:
+                message = _("Este cliente tiene facturas vencidas.")
                 self.notification_message = message
-                self.estado = 'tope'  # Cambiar el estado a "Deudor"
+                self.estado = 'deudor'  # Cambiar el estado a "Deudor"
                 return {
                     'warning': {
                         'title': _('Aviso'),
