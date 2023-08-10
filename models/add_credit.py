@@ -68,6 +68,21 @@ class Add_credit_venta(models.Model):
                 ('state', '=', 'open'),
                 ('date_due', '<', fields.Date.today())
             ])
+            vencido = Invoice.search([('partner_id', '=', self.partner_id.id),
+                                      ('type', '=', 'out_invoice'),
+                                      ('state', '=', 'open')])
+            total_deuda = sum(factura.amount_total for factura in vencido)            
+            if total_deuda > self.partner_id.credit_limit:
+                message = _("Este cliente sobrepasó su credito.")
+                self.notification_message = message
+                self.estado = 'tope'  # Cambiar el estado a "Deudor"
+                self.state = 'cancel' 
+                return {
+                    'warning': {
+                        'title': _('Aviso'),
+                        'message': message,
+                    }                    
+                }                
             if pre_total > 0:
                 message = _("Este cliente tiene facturas vencidas.")
                 self.notification_message = message
@@ -79,6 +94,6 @@ class Add_credit_venta(models.Model):
                     }
                 }
             else:
-                self.estado = 'active'  # Restaurar el estado a "Activo" si no hay facturas vencidas
+                self.estado = 'active'  # Restaurar el estado a "Activo" si no hay facturas vencidas            
 
         self.notification_message = False
