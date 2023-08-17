@@ -4,9 +4,10 @@
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_form"/>
         <field name="arch" type="xml">
-            <field name="partner_id" position="after">
+            <!--<field name="partner_id" position="after">
                 <field name="notification_message" widget="notification" options="{'display_notifications': 'message'}"/>
             </field>
+            !-->
             <xpath expr="//field[@name='partner_id']" position="after">
                    <field name="estado"/>                
             </xpath>
